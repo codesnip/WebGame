@@ -1,4 +1,4 @@
-#include "include/WebGame.h"
+#include "../include/WebGame.h"
 
 int main()
 {
