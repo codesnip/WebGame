@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1305027100 source:/home/pc3000/Рабочий стол/WebGame/main.cpp
+	"include/WebGame.h"
+
+1305026913 /home/pc3000/Рабочий стол/WebGame/include/WebGame.h
+
+1305027141 source:/home/pc3000/Рабочий стол/WebGame/src/WebGame.cpp
+	"../include/WebGame.h"
+
