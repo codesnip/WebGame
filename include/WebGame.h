@@ -9,9 +9,8 @@ class cWebGame
         cWebGame()   { Init(); }
         ~cWebGame()  { Destruct(); }
 
-        bool MainLoop();
         void CloseSocket(int SocketNo);
-
+        void StartMainLoop();
     protected:
         void Init();
         void Destruct();

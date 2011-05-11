@@ -3,6 +3,6 @@
 int main()
 {
     cWebGame WebGame;
-    WebGame.MainLoop();
+    WebGame.StartMainLoop();
     return 0;
 }

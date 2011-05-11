@@ -20,13 +20,13 @@ void cWebGame::Destruct()
     delete OutputDevice; // should be last
 }
 
-bool cWebGame::MainLoop()
+
+void cWebGame::StartMainLoop()
 {
-    //
-
-
-
-return true;
+    OutputDevice->Output("Starting main loop...\n");
+    Sockets->MainLoop();
+    OutputDevice->Output("Main loop ended...\n");
 }
+
 
 

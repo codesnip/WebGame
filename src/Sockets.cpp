@@ -10,19 +10,33 @@
 cSockets::cSockets(cOutputDevice * OutputDevice)
 {
     //ctor
-   cSockets::OutputDevice = OutputDevice;
-   ListenerSocket = -1;
-   CreateListeningSocket();
+    SocketMAX = -1;
+    SelectTimeout = NULL;
+    if(SELECT_TIMEOUT_SEC > 0)
+    {
+        OutputDevice->Output("SelectTimeout = %d\n", SELECT_TIMEOUT_SEC);
+        SelectTimeout = new timeval;
+        SelectTimeout->tv_sec = SELECT_TIMEOUT_SEC;
+        SelectTimeout->tv_usec = 0;
+    }
+
+    cSockets::OutputDevice = OutputDevice;
+    ListenerSocket = -1;
+    CreateListeningSocket();
 }
 
 cSockets::~cSockets()
 {
     //dtor
+    if(SELECT_TIMEOUT_SEC > 0)
+    {
+        delete SelectTimeout;
+    }
 }
 
 void cSockets::CreateListeningSocket()
 {
-     OutputDevice->Output( "----Creating listener socket.----\n" );
+    OutputDevice->Output( "----Creating listener socket.----\n" );
 
     OutputDevice->Output( "1: Creating socket for listenig.\n" );
     if ( (ListenerSocket = socket(AF_INET, SOCK_STREAM, 0) ) == -1 ) { // Todo   close created socket
@@ -52,6 +66,13 @@ void cSockets::CreateListeningSocket()
        // return false;
     }
     OutputDevice->Output("3: Binding done.\n\n");
+
+    OutputDevice->Output( "4: Setting socket to listen.\n" );
+    if (listen(ListenerSocket, MAX_NUM_CLIENTS) == -1) {
+       OutputDevice->Output( "4: Error setting socket to listen. Exiting.\n" );
+       CloseSocket( ListenerSocket );
+    }
+    OutputDevice->Output("4: Setting socket to listen done.\n\n");
     OutputDevice->Output( "----Creating listener socket done.----\n\n" );
 }
 
@@ -70,3 +91,9 @@ void cSockets::CloseSocket(int SocketNo)
 
     close( SocketNo );
 }
+
+
+ void cSockets::MainLoop()
+ {
+
+ }

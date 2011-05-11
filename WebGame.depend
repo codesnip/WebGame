@@ -1,23 +1,4 @@
 # depslib dependency file v1.0
-1305027100 source:/home/pc3000/Рабочий стол/WebGame/main.cpp
-	"include/WebGame.h"
-
-1305026913 /home/pc3000/Рабочий стол/WebGame/include/WebGame.h
-
-1305027141 source:/home/pc3000/Рабочий стол/WebGame/src/WebGame.cpp
-	"../include/WebGame.h"
-
-1305095508 source:/home/pc3000/WebGame/src/WebGame.cpp
-	"../include/WebGame.h"
-	"../include/Sockets.h"
-
-1305095346 /home/pc3000/WebGame/include/WebGame.h
-	"../include/OutputDevice.h"
-	"../include/Sockets.h"
-
-1305086170 source:/home/pc3000/WebGame/src/main.cpp
-	"../include/WebGame.h"
-
 1305096904 source:/home/pc3000/WebGame/src/OutputDevice.cpp
 	"../include/OutputDevice.h"
 	<iostream>
@@ -26,7 +7,7 @@
 
 1305096390 /home/pc3000/WebGame/include/OutputDevice.h
 
-1305095558 source:/home/pc3000/WebGame/src/Sockets.cpp
+1305104241 source:/home/pc3000/WebGame/src/Sockets.cpp
 	"../include/Sockets.h"
 	"../include/OutputDevice.h"
 	<sys/socket.h>
@@ -34,9 +15,14 @@
 	<string.h>
 	<iostream>
 
-1305094852 /home/pc3000/WebGame/include/cSockets.h
+1305103922 /home/pc3000/WebGame/include/Sockets.h
 	"../include/OutputDevice.h"
+	<stdlib.h>
 
-1305094852 /home/pc3000/WebGame/include/Sockets.h
+1305104162 source:/home/pc3000/WebGame/src/main.cpp
+	"../include/WebGame.h"
+
+1305104071 /home/pc3000/WebGame/include/WebGame.h
 	"../include/OutputDevice.h"
+	"../include/Sockets.h"
 
