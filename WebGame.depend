@@ -7,11 +7,36 @@
 1305027141 source:/home/pc3000/Рабочий стол/WebGame/src/WebGame.cpp
 	"../include/WebGame.h"
 
-1305028014 source:/home/pc3000/WebGame/src/WebGame.cpp
+1305095508 source:/home/pc3000/WebGame/src/WebGame.cpp
+	"../include/WebGame.h"
+	"../include/Sockets.h"
+
+1305095346 /home/pc3000/WebGame/include/WebGame.h
+	"../include/OutputDevice.h"
+	"../include/Sockets.h"
+
+1305086170 source:/home/pc3000/WebGame/src/main.cpp
 	"../include/WebGame.h"
 
-1305028014 /home/pc3000/WebGame/include/WebGame.h
+1305096904 source:/home/pc3000/WebGame/src/OutputDevice.cpp
+	"../include/OutputDevice.h"
+	<iostream>
+	<stdio.h>
+	<stdarg.h>
 
-1305028386 source:/home/pc3000/WebGame/src/main.cpp
-	"../include/WebGame.h"
+1305096390 /home/pc3000/WebGame/include/OutputDevice.h
+
+1305095558 source:/home/pc3000/WebGame/src/Sockets.cpp
+	"../include/Sockets.h"
+	"../include/OutputDevice.h"
+	<sys/socket.h>
+	<netinet/in.h>
+	<string.h>
+	<iostream>
+
+1305094852 /home/pc3000/WebGame/include/cSockets.h
+	"../include/OutputDevice.h"
+
+1305094852 /home/pc3000/WebGame/include/Sockets.h
+	"../include/OutputDevice.h"
 

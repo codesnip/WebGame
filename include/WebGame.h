@@ -1,16 +1,25 @@
 #ifndef WEBGAME_H
 #define WEBGAME_H
-
+#include "../include/OutputDevice.h"
+#include "../include/Sockets.h"
 
 class cWebGame
 {
     public:
         cWebGame()   { Init(); }
         ~cWebGame()  { Destruct(); }
+
+        bool MainLoop();
+        void CloseSocket(int SocketNo);
+
     protected:
         void Init();
         void Destruct();
-        void MainLoop();
+
+        bool ServerIsRunning;
+
+        cOutputDevice * OutputDevice;
+        cSockets      * Sockets;
     private:
 };
 

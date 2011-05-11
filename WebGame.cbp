@@ -32,7 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/OutputDevice.h" />
+		<Unit filename="include/Sockets.h" />
 		<Unit filename="include/WebGame.h" />
+		<Unit filename="src/OutputDevice.cpp" />
+		<Unit filename="src/Sockets.cpp" />
 		<Unit filename="src/WebGame.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
