@@ -2,7 +2,7 @@
 #define CSOCKETS_H
 #include "../include/OutputDevice.h"
 #include <stdlib.h>  //for timeval
-
+#include "../include/ThreadSynhronization.h"
 
 
 
@@ -24,6 +24,9 @@ class cSockets
     protected:
 
     private:
+    fd_set MainReadDescriptor; // Main descriptor for reading for select();
+    fd_set TemporaryReadDescriptor; // Temporary descriptor for reading for select();
+    int BigestSocketNum;
     timeval *SelectTimeout;
     int SocketMAX;
 

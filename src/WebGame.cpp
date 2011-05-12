@@ -1,15 +1,17 @@
+#include "../include/ThreadSynhronization.h"
 #include "../include/WebGame.h"
 #include "../include/Sockets.h"
-
 
 
 void cWebGame::Init()
 {
     //
     ServerIsRunning = true;
-    OutputDevice = new cOutputDevice;
+    ThreadSynhronization = new cThreadSynhronization;
+    OutputDevice = new cOutputDevice( ThreadSynhronization );
     OutputDevice->Output( "Starting server...\n" );
-    Sockets = new cSockets(OutputDevice);
+    Sockets = new cSockets( OutputDevice );
+
 }
 
 void cWebGame::Destruct()
@@ -17,6 +19,7 @@ void cWebGame::Destruct()
     //
     ServerIsRunning = false;
     delete Sockets;
+    delete ThreadSynhronization;
     delete OutputDevice; // should be last
 }
 
@@ -27,6 +30,4 @@ void cWebGame::StartMainLoop()
     Sockets->MainLoop();
     OutputDevice->Output("Main loop ended...\n");
 }
-
-
 

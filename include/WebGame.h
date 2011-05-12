@@ -2,6 +2,7 @@
 #define WEBGAME_H
 #include "../include/OutputDevice.h"
 #include "../include/Sockets.h"
+#include "../include/ThreadSynhronization.h"
 
 class cWebGame
 {
@@ -17,8 +18,9 @@ class cWebGame
 
         bool ServerIsRunning;
 
-        cOutputDevice * OutputDevice;
-        cSockets      * Sockets;
+        cOutputDevice          * OutputDevice;
+        cSockets               * Sockets;
+        cThreadSynhronization  * ThreadSynhronization;
     private:
 };
 

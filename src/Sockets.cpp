@@ -1,15 +1,18 @@
 #include "../include/Sockets.h"
 #include "../include/OutputDevice.h"
+#include "../include/ThreadSynhronization.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
 //#include <sys/types.h>
 #include <iostream>
+#include <fcntl.h>
 
 
 cSockets::cSockets(cOutputDevice * OutputDevice)
 {
     //ctor
+    BigestSocketNum = 0;
     SocketMAX = -1;
     SelectTimeout = NULL;
     if(SELECT_TIMEOUT_SEC > 0)
@@ -45,34 +48,42 @@ void cSockets::CreateListeningSocket()
     }
     OutputDevice->Output( "1: Socket for listening created. Socket no %d\n\n", ListenerSocket );
 
-    OutputDevice->Output("2: Setting SO_REUSEADDR.\n");
+OutputDevice->Output("2: Setting socket to non blocking mode.\n");
+  int x;
+  x=fcntl(ListenerSocket,F_GETFL,0);
+  fcntl(ListenerSocket,F_SETFL,x | O_NONBLOCK);
+OutputDevice->Output("2: Setting socket to non blocking mode done.\n\n");
+
+    OutputDevice->Output("3: Setting SO_REUSEADDR.\n");
     int yes=1;
     if ( setsockopt( ListenerSocket, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int) ) == -1 ) {
-        OutputDevice->Output("2: Can't set SO_REUSEADDR. Exiting.\n");
+        OutputDevice->Output("3: Can't set SO_REUSEADDR. Exiting.\n");
         CloseSocket(ListenerSocket);
        // return false;
     }
-    OutputDevice->Output("2: SO_REUSEADDR set.\n\n");
+    OutputDevice->Output("3: SO_REUSEADDR set.\n\n");
 
-    OutputDevice->Output("3: Binding.\n");
+    OutputDevice->Output("4: Binding.\n");
     sockaddr_in ServerAdress;
     ServerAdress.sin_family = AF_INET;
     ServerAdress.sin_addr.s_addr = INADDR_ANY;
     ServerAdress.sin_port = htons(SERVER_PORT);
     memset(&(ServerAdress.sin_zero), '\0', 8);
     if ( bind(ListenerSocket, (sockaddr *)&ServerAdress, sizeof(ServerAdress)) == -1 ) {
-        OutputDevice->Output("3: Error binding. Exiting.\n");
+        OutputDevice->Output("4: Error binding. Exiting.\n");
         CloseSocket( ListenerSocket );
        // return false;
     }
-    OutputDevice->Output("3: Binding done.\n\n");
+    OutputDevice->Output("4: Binding done.\n\n");
 
-    OutputDevice->Output( "4: Setting socket to listen.\n" );
+    OutputDevice->Output( "5: Setting socket to listen.\n" );
     if (listen(ListenerSocket, MAX_NUM_CLIENTS) == -1) {
-       OutputDevice->Output( "4: Error setting socket to listen. Exiting.\n" );
+       OutputDevice->Output( "5: Error setting socket to listen. Exiting.\n" );
        CloseSocket( ListenerSocket );
     }
-    OutputDevice->Output("4: Setting socket to listen done.\n\n");
+    OutputDevice->Output("5: Setting socket to listen done.\n\n");
+    FD_SET(ListenerSocket, &MainReadDescriptor);
+    BigestSocketNum = ListenerSocket;
     OutputDevice->Output( "----Creating listener socket done.----\n\n" );
 }
 
@@ -95,5 +106,14 @@ void cSockets::CloseSocket(int SocketNo)
 
  void cSockets::MainLoop()
  {
-
+    // main loop
+    for(;;)
+    {
+       TemporaryReadDescriptor = MainReadDescriptor;
+            if (select(BigestSocketNum+1, &TemporaryReadDescriptor, NULL, NULL, SelectTimeout) == -1)
+            {
+                OutputDevice->Output( "Critical error: Select returned -1. Exiting.\n" );
+                return;
+            }
+    }
  }
