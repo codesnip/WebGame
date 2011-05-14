@@ -17,6 +17,7 @@ class cIntConnectedList
         void PrintAll();
         void ResetIterator();
         int GetNextValue();
+        inline  int GetNumElements(){ return NumElements; }
     protected:
 
     private:

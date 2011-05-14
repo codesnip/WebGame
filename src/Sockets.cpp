@@ -12,7 +12,7 @@
 cSockets::cSockets(cOutputDevice * OutputDevice)
 {
     //ctor
-Cliets = new cIntConnectedList(MAX_NUM_CLIENTS);
+Clients = new cIntConnectedList(MAX_NUM_CLIENTS);
 TempForAddingToEpoll.events = EPOLLIN | EPOLLET; // Задаем какие события будем улавливать с помощю epool от слушающего сокета
     cSockets::OutputDevice = OutputDevice;
     ListenerSocket = -1;
@@ -22,7 +22,7 @@ TempForAddingToEpoll.events = EPOLLIN | EPOLLET; // Задаем какие со
 cSockets::~cSockets()
 {
     //dtor
-    delete Cliets;
+    delete Clients;
 }
 
 void cSockets::CreateListeningSocket()
@@ -131,6 +131,7 @@ void cSockets::CloseSocket(int SocketNo)
                 {
                     OutputDevice->Output( "Error adding new client to epoll.\n" );
                 }
+                Clients->Add(Client);
                 // Отправим приветствие клиенту
                 {
                     char message[1024];
@@ -147,13 +148,15 @@ void cSockets::CloseSocket(int SocketNo)
 
         }
      }
+        close(ListenerSocket);
+        close(EpollDescriptor);
  }
 
 #define BUF_SIZE 1024
 void cSockets::HandleDataFromClient( int ClientID )
 {
     //Пришли данные от клиента
-       int NumRecievedBytes;
+       int NumRecievedBytes, TempElement;
 
        char buf[BUF_SIZE], message[BUF_SIZE];
        bzero(buf, BUF_SIZE);
@@ -165,10 +168,41 @@ void cSockets::HandleDataFromClient( int ClientID )
       {
           // Клиент закрыл соединение
             CloseSocket( ClientID );
+            Clients->Remove( ClientID );
       }else
       {
           // К нам пришли реальные данные от клиента
+        if( Clients->GetNumElements() == 1 )
+        {
+              // К серверу подсоединен только 1 клиент.
+              // Скажем ему что подсоединен только он.
 
+           if( send(ClientID, STR_NOONE_CONNECTED, strlen(STR_NOONE_CONNECTED), 0) <= 0 )
+           {
+                // Если произошла ошибка то отсоединим клиента
+                CloseSocket( ClientID );
+                Clients->Remove( ClientID );
+           }
+
+        }else
+        {
+            sprintf(message, STR_MESSAGE, ClientID, buf);
+
+           Clients-> ResetIterator();
+            for( TempElement = Clients->GetNextValue(); TempElement != ITERATOR_END ; TempElement = Clients->GetNextValue() )
+            {
+                 if( TempElement != ClientID )
+                 {
+                    if ( send(TempElement, message, BUF_SIZE, 0) <= 0 )
+                    { // Если произошла ошибка то отсоединим клиента
+                        CloseSocket( ClientID );
+                        Clients->Remove( ClientID );
+                    }
+                 }
+            }
+
+
+        }
 
       }
 }

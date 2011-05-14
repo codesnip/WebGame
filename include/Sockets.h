@@ -14,6 +14,8 @@
 #define MAX_NUM_CLIENTS 10000
 #define EPOLL_RUN_TIMEOUT -1
 
+#define STR_NOONE_CONNECTED "Noone connected to server except you!"
+#define STR_MESSAGE "Client #%d>> %s"
 class cSockets
 {
     public:
@@ -33,7 +35,7 @@ int EpollDescriptor;
     int ListenerSocket;
     void HandleDataFromClient( int ClientID );
     void CloseSocket(int SocketNo);
-    cIntConnectedList * Cliets;
+    cIntConnectedList * Clients;
 };
 
 #endif // CSOCKETS_H
