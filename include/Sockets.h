@@ -4,15 +4,15 @@
 #include <stdlib.h>  //for timeval
 #include "../include/ThreadSynhronization.h"
 
-
+#include <sys/epoll.h>
+#include "../include/IntConnectedList.h"
 
 
 
 
 #define SERVER_PORT 8080
 #define MAX_NUM_CLIENTS 10000
-
-#define SELECT_TIMEOUT_SEC 0
+#define EPOLL_RUN_TIMEOUT -1
 
 class cSockets
 {
@@ -24,14 +24,14 @@ class cSockets
     protected:
 
     private:
-    fd_set MainReadDescriptor; // Main descriptor for reading for select();
-    fd_set TemporaryReadDescriptor; // Temporary descriptor for reading for select();
-    int BigestSocketNum;
-    timeval *SelectTimeout;
-    int SocketMAX;
+
+epoll_event TempForAddingToEpoll;
+epoll_event ForAllEvents[MAX_NUM_CLIENTS];
+int EpollDescriptor;
 
     cOutputDevice * OutputDevice;
     int ListenerSocket;
+    void HandleDataFromClient( int ClientID );
     void CloseSocket(int SocketNo);
 };
 
