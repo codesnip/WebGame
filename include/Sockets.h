@@ -33,6 +33,7 @@ int EpollDescriptor;
     int ListenerSocket;
     void HandleDataFromClient( int ClientID );
     void CloseSocket(int SocketNo);
+    cIntConnectedList * Cliets;
 };
 
 #endif // CSOCKETS_H

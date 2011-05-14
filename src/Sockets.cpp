@@ -12,7 +12,7 @@
 cSockets::cSockets(cOutputDevice * OutputDevice)
 {
     //ctor
-
+Cliets = new cIntConnectedList(MAX_NUM_CLIENTS);
 TempForAddingToEpoll.events = EPOLLIN | EPOLLET; // Задаем какие события будем улавливать с помощю epool от слушающего сокета
     cSockets::OutputDevice = OutputDevice;
     ListenerSocket = -1;
@@ -22,7 +22,7 @@ TempForAddingToEpoll.events = EPOLLIN | EPOLLET; // Задаем какие со
 cSockets::~cSockets()
 {
     //dtor
-
+    delete Cliets;
 }
 
 void cSockets::CreateListeningSocket()
@@ -168,6 +168,7 @@ void cSockets::HandleDataFromClient( int ClientID )
       }else
       {
           // К нам пришли реальные данные от клиента
+
 
       }
 }

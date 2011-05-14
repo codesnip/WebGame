@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include/IntConnectedList.h" open="0" top="0" tabpos="0">
-		<Cursor position="134" topLine="0" />
+	<File name="include/IntConnectedList.h" open="0" top="0" tabpos="2">
+		<Cursor position="209" topLine="10" />
 	</File>
 	<File name="include/OutputDevice.h" open="0" top="0" tabpos="6">
 		<Cursor position="250" topLine="2" />
 	</File>
-	<File name="include/Sockets.h" open="0" top="0" tabpos="0">
-		<Cursor position="221" topLine="11" />
+	<File name="include/Sockets.h" open="0" top="0" tabpos="5">
+		<Cursor position="327" topLine="0" />
 	</File>
 	<File name="include/ThreadSynhronization.h" open="0" top="0" tabpos="0">
 		<Cursor position="318" topLine="0" />
@@ -16,22 +16,22 @@
 	<File name="include/WebGame.h" open="0" top="0" tabpos="2">
 		<Cursor position="453" topLine="0" />
 	</File>
-	<File name="src/IntConnectedList.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="475" topLine="0" />
+	<File name="src/IntConnectedList.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1498" topLine="0" />
 	</File>
 	<File name="src/OutputDevice.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="528" topLine="10" />
 	</File>
-	<File name="src/Sockets.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="5801" topLine="155" />
+	<File name="src/Sockets.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="717" topLine="135" />
 	</File>
 	<File name="src/ThreadSynhronization.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="202" topLine="0" />
 	</File>
-	<File name="src/WebGame.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="143" topLine="0" />
+	<File name="src/WebGame.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="668" topLine="12" />
 	</File>
 	<File name="src/main.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="82" topLine="0" />
+		<Cursor position="528" topLine="1" />
 	</File>
 </CodeBlocks_layout_file>
