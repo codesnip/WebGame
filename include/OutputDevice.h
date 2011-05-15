@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef COUTPUTDEVICE_H
 #define COUTPUTDEVICE_H
 #include "../include/ThreadSynhronization.h"

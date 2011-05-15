@@ -1,11 +1,19 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #include "../include/WebGame.h"
 #include "../include/IntConnectedList.h"
+#include "../include/HTTP.h"
 #include <iostream>
 #include <limits>
 int main()
 {
-    cWebGame WebGame;
-    WebGame.StartMainLoop();
+//    cWebGame WebGame;
+//    WebGame.StartMainLoop();
+
+
+
   // cIntConnectedList IntConnectedList(100);
   //  IntConnectedList.Add(0);
 //IntConnectedList.Add(1);
@@ -22,6 +30,9 @@ int main()
 
 
    // IntConnectedList.PrintAll();
+
+cHTTP HTTP;
+HTTP.LoadFromFile("http request.txt");
 
     return 0;
 }

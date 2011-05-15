@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef CINTCONNECTEDLIST_H
 #define CINTCONNECTEDLIST_H
 #define ITERATOR_END -2147483648

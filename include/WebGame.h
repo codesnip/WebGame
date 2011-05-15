@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef WEBGAME_H
 #define WEBGAME_H
 #include "../include/OutputDevice.h"

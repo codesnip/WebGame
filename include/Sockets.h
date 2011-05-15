@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef CSOCKETS_H
 #define CSOCKETS_H
 #include "../include/OutputDevice.h"

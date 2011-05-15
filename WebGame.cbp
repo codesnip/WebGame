@@ -39,9 +39,6 @@
 		<Unit filename="include/Sockets.h" />
 		<Unit filename="include/ThreadSynhronization.h" />
 		<Unit filename="include/WebGame.h" />
-		<Unit filename="src/Common">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="src/FileIO.cpp" />
 		<Unit filename="src/HTTP.cpp" />
 		<Unit filename="src/IntConnectedList.cpp" />

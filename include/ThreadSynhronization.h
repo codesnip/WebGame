@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef CTHREADSYNHRONIZATION_H
 #define CTHREADSYNHRONIZATION_H
 #include <pthread.h>

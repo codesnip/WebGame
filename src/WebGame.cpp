@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #include "../include/ThreadSynhronization.h"
 #include "../include/WebGame.h"
 #include "../include/Sockets.h"

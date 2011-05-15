@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #include "../include/IntConnectedList.h"
 #include <iostream>
 cIntConnectedList::cIntConnectedList( unsigned int NumMemoryToReserve )

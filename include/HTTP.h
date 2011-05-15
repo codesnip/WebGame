@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2011 WebGame project.
+*/
+
 #ifndef CHTTP_H
 #define CHTTP_H
 
@@ -24,8 +28,10 @@ class cHTTP
         void Reset();
         void LoadData( char * Data );
         void ProcessData();
+        void LoadFromFile(char * FileName);
     protected:
     private:
+
     int ConvertTextToNumberInteger(char * Text, int size, int & LastCurNum); // size - размер текста без 0
     float ConvertTextToNumberFloat(char * Text, int size);
     char * GetNextTokenSkipSpacebar(char * Data, int & type,int & LastTokenSize, int & LastTokenStartReadPos, int & LastTokenStart);

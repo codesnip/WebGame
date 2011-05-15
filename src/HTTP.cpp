@@ -1,5 +1,9 @@
-#include "../include/HTTP.h"
+/*
+Copyright (C) 2011 WebGame project.
+*/
 
+#include "../include/HTTP.h"
+#include "../include/FileIO.h"
 void cHTTP::Reset()
 {
     //ctor
@@ -16,6 +20,22 @@ void cHTTP::LoadData( char * Data )
     //
     Reset();
     cHTTP::Data = Data;
+}
+
+void cHTTP::LoadFromFile(char * FileName)
+{
+    //
+    char * Data;
+    cFile File;
+    File.LoadFile(FileName, (char **)&Data);
+    if(Data == (char *)0 || Data == (char *)ERROR_OPEN_FILE)
+    {
+        printf( "couldn't find file or file size == 0  '%s'", FileName );
+        return;
+    }
+    LoadData( Data );
+    delete [] Data;
+
 }
 
 

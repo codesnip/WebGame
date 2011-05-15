@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2011 Tech1 Game Engine.
+Copyright (C) 2011 WebGame project.
 */
 
 #include <stdio.h>

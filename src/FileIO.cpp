@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2011 Tech1 Game Engine.
+Copyright (C) 2011 WebGame project.
 */
 
 
@@ -63,7 +63,7 @@ void cFile::LoadFile(char * FileName, char ** DataToStore)
     OpenFile(FileName, "rb");
     *DataToStore = new char[FileSize+1];
     ReadFile(*DataToStore, FileSize);
-    *DataToStore[FileSize]=0;
+    (*DataToStore)[FileSize] = 0;
     CloseFile();
 }
 
