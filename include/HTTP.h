@@ -31,7 +31,7 @@ class cHTTP
         void LoadFromFile(char * FileName);
     protected:
     private:
-
+    bool CmpString(char * Str1, char * Str2, unsigned int Str1Size);
     int ConvertTextToNumberInteger(char * Text, int size, int & LastCurNum); // size - размер текста без 0
     float ConvertTextToNumberFloat(char * Text, int size);
     char * GetNextTokenSkipSpacebar(char * Data, int & type,int & LastTokenSize, int & LastTokenStartReadPos, int & LastTokenStart);

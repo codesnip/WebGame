@@ -4,6 +4,9 @@ Copyright (C) 2011 WebGame project.
 
 #include "../include/HTTP.h"
 #include "../include/FileIO.h"
+#include <iostream>
+#include <string.h>
+using namespace std;
 void cHTTP::Reset()
 {
     //ctor
@@ -20,6 +23,7 @@ void cHTTP::LoadData( char * Data )
     //
     Reset();
     cHTTP::Data = Data;
+    ProcessData();
 }
 
 void cHTTP::LoadFromFile(char * FileName)
@@ -44,9 +48,63 @@ void cHTTP::ProcessData()
     //
     int type = 0;
     char * Token;
-    Token = GetNextTokenSkipSpacebar( Data ,type, LastTokenSize, LastTokenStartReadPos, LastTokenStart );
+
+		Token = GetNextTokenSkipSpacebar(Data , type, LastTokenSize, LastTokenStartReadPos, LastTokenStart);
+		while(type != END_EOF)
+		{
+			//if(type == )
+			//{
+			//	cout << "ShadersLoader:Unexpected end of file";
+			//	return;
+			//}
+            if(type!=BIG_OR_SMALL_LETERS_AND_NUMBERS)
+						{
+							cout << "ProcessData(): " << "Invalid HTTP Request.\n" ;
+							return;
+						}
+			if(CmpString(Token, "GET",LastTokenSize))
+				{
+					cout << "ProcessData(): " << "GET Detected.\n";
+
+					Token = GetNextTokenSkipSpacebar(Data , type, LastTokenSize, LastTokenStartReadPos, LastTokenStart);
+					if(type!=BIG_OR_SMALL_LETERS_AND_NUMBERS)
+						{
+							cout << "ProcessData(): " << "Invalid Requested URL.\n";
+							return;
+						}
+					//ShaderIndex = ConvertTextToNumberInteger(Token,LastTokenSize, LastCurNum);
+
+					Token = GetNextTokenSkipSpacebar(Data , type, LastTokenSize, LastTokenStartReadPos, LastTokenStart);
+					continue;
+				}
+
+
+            cout << "ProcessData(): " << "Unknown HTTP Request.\n";
+			return;
+			//Token = GetNextTokenSkipSpacebar(ScriptData , type, LastTokenSize, LastTokenStartReadPos, LastTokenStart);
+
+			//OnlyForDebug++;
+			continue;
+
+		}
+
+
 }
 
+
+bool cHTTP::CmpString(char * Str1, char * Str2, unsigned int Str1Size)
+{
+unsigned int Str2Size = strlen(Str2);
+if( Str1Size != Str2Size) return false;
+	while(Str1Size)
+	{
+		if(*Str1 != *Str2) return false;
+		Str1++;
+		Str2++;
+		Str1Size--;
+	}
+	return true;
+}
 
 int cHTTP::ConvertTextToNumberInteger(char * Text, int size, int & LastCurNum) // size - размер текста без 0
 {

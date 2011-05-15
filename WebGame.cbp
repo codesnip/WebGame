@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/DataStorage.h" />
 		<Unit filename="include/FileIO.h" />
 		<Unit filename="include/HTTP.h" />
 		<Unit filename="include/IntConnectedList.h" />
@@ -39,6 +40,7 @@
 		<Unit filename="include/Sockets.h" />
 		<Unit filename="include/ThreadSynhronization.h" />
 		<Unit filename="include/WebGame.h" />
+		<Unit filename="src/DataStorage.cpp" />
 		<Unit filename="src/FileIO.cpp" />
 		<Unit filename="src/HTTP.cpp" />
 		<Unit filename="src/IntConnectedList.cpp" />

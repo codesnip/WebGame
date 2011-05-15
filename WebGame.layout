@@ -5,7 +5,7 @@
 		<Cursor position="589" topLine="6" />
 	</File>
 	<File name="include/HTTP.h" open="0" top="0" tabpos="0">
-		<Cursor position="433" topLine="22" />
+		<Cursor position="497" topLine="21" />
 	</File>
 	<File name="include/IntConnectedList.h" open="0" top="0" tabpos="2">
 		<Cursor position="41" topLine="0" />
@@ -22,14 +22,17 @@
 	<File name="include/WebGame.h" open="0" top="0" tabpos="2">
 		<Cursor position="41" topLine="0" />
 	</File>
+	<File name="src/DataStorage.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="182" topLine="0" />
+	</File>
 	<File name="src/FileIO.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1250" topLine="56" />
+		<Cursor position="924" topLine="33" />
 	</File>
 	<File name="src/HTTP.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="656" topLine="51" />
+		<Cursor position="4375" topLine="0" />
 	</File>
 	<File name="src/IntConnectedList.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="41" topLine="0" />
+		<Cursor position="298" topLine="7" />
 	</File>
 	<File name="src/OutputDevice.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="41" topLine="0" />
@@ -41,9 +44,9 @@
 		<Cursor position="41" topLine="0" />
 	</File>
 	<File name="src/WebGame.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="41" topLine="0" />
+		<Cursor position="41" topLine="14" />
 	</File>
 	<File name="src/main.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="688" topLine="16" />
+		<Cursor position="689" topLine="15" />
 	</File>
 </CodeBlocks_layout_file>
