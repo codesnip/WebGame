@@ -32,11 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/FileIO.h" />
+		<Unit filename="include/HTTP.h" />
 		<Unit filename="include/IntConnectedList.h" />
 		<Unit filename="include/OutputDevice.h" />
 		<Unit filename="include/Sockets.h" />
 		<Unit filename="include/ThreadSynhronization.h" />
 		<Unit filename="include/WebGame.h" />
+		<Unit filename="src/Common">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="src/FileIO.cpp" />
+		<Unit filename="src/HTTP.cpp" />
 		<Unit filename="src/IntConnectedList.cpp" />
 		<Unit filename="src/OutputDevice.cpp" />
 		<Unit filename="src/Sockets.cpp" />
